@@ -6,8 +6,12 @@ namespace ProjectRed
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("What are you doing?");
+            Triangle straight = new Triangle();
+            var s = straight.Square(5, 7);
+            Console.WriteLine(s);
+            var c = straight.Hypotenuse(5, 7);
+            Console.WriteLine(c);
+
         }
     }
 }
