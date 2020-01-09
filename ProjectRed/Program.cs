@@ -6,11 +6,34 @@ namespace ProjectRed
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Input parameter a");
+            int a = int.Parse(Console.ReadLine());
+            Console.WriteLine("Input parameter b");
+            int b = int.Parse(Console.ReadLine());
+
+
             Triangle straight = new Triangle();
-            var s = straight.Square(5, 7);
-            Console.WriteLine(s);
-            var c = straight.Hypotenuse(5, 7);
-            Console.WriteLine(c);
+
+            try
+            {
+                var s = straight.Square(a, b);
+                Console.WriteLine("Square: " + s);
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("Error");
+            }
+
+            try
+            {
+                var c = straight.Hypotenuse(a, b);
+                Console.WriteLine("Hypotenuse: " + c);
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("Error");
+            }
+            
 
         }
     }
