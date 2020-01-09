@@ -7,18 +7,18 @@ namespace ProjectRed.Tests
 {
     public class MyCSharpTests
     {
-        private ChromeDriver driver;
+        private ChromeDriver driver; // field
 
-        [OneTimeSetUp]
-        public void InitSetup()
+        [OneTimeSetUp] // attribute
+        public void InitSetup() // method
         {
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(); // initialize of field
         }
 
         [TearDown]
         public void Down()
         {
-            Screenshot img = driver.GetScreenshot();
+            Screenshot img = driver.GetScreenshot(); //initialize of variable
             img.SaveAsFile($"d://img_{DateTime.UtcNow.ToString("yyyy-dd-M--HH-mm-ss")}", ScreenshotImageFormat.Png);
         }
 
@@ -26,7 +26,7 @@ namespace ProjectRed.Tests
         [OneTimeTearDown]
         public void TearDown()
         {
-            driver.Close();
+            driver.Close(); //call the method
         }
 
         [Test]
