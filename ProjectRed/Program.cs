@@ -6,7 +6,7 @@ namespace ProjectRed
     {
         static void Main(string[] args)
         {
-            MatchResults();
+            DigitCheck();
             
 
         }
@@ -26,7 +26,20 @@ namespace ProjectRed
             {
                 Console.WriteLine("Amount of goals could not be negative.");
             }
+        }
 
+        private static void DigitCheck()
+        {
+            Console.WriteLine("Input digit:");
+            int digit = int.Parse(Console.ReadLine());
+            if (digit % 3 == 0 && digit % 7 == 0)
+            {
+                Console.WriteLine("Number is multiple of 3 and 7.");
+            }
+            else
+            {
+                Console.WriteLine("Number is not multiple of 3 and 7.");
+            }
         }
 
         private static void Triangle()
