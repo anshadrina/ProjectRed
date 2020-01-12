@@ -6,6 +6,31 @@ namespace ProjectRed
     {
         static void Main(string[] args)
         {
+            MatchResults();
+            
+
+        }
+
+        private static void MatchResults()
+        {
+            Console.WriteLine("Input owner goals:");
+            int ownerGoals = int.Parse(Console.ReadLine());
+            Console.WriteLine("Input guest goals:");
+            int guestGoals = int.Parse(Console.ReadLine());
+            Match match = new Match();
+            try
+            {
+                Console.WriteLine(match.GetResult(ownerGoals, guestGoals));
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("Amount of goals could not be negative.");
+            }
+
+        }
+
+        private static void Triangle()
+        {
             Console.WriteLine("Input parameter a");
             int a = int.Parse(Console.ReadLine());
             Console.WriteLine("Input parameter b");
@@ -33,8 +58,6 @@ namespace ProjectRed
             {
                 Console.WriteLine("Error");
             }
-            
-
         }
     }
 }
