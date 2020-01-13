@@ -6,9 +6,43 @@ namespace ProjectRed
     {
         static void Main(string[] args)
         {
-            DigitCheck();
+             AdditionArray();
             
 
+        }
+
+        private static void CreateArray()
+        {
+            int a = 1;
+            for (int i = 0; i < 20; i++)
+            {
+                Console.WriteLine(a + i * 3);
+            }
+        }
+
+        private static void GetPassword()
+        {
+            string password;
+            do
+            {
+                Console.WriteLine("Input password:");
+                password = Console.ReadLine();
+            }
+            while (password != "root");
+            Console.WriteLine("Password is correct.");
+        }
+
+        private static void AdditionArray()
+        {
+            int[] array1 = { 2, 3, 7, 2, 5, 33, 1, 45, 67, 8 };
+            int[] array2 = { 5, 34, 5, 2, 5, 87, 23, 4, 9, 96 };
+            int[] array3 = new int[10];
+            for (int i = 0; i < array3.Length; i++)
+            {
+                array3[i] = array1[i] + array2[i];
+                Console.WriteLine(array3[i]);
+            }
+            
         }
 
         private static void MatchResults()
