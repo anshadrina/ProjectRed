@@ -6,9 +6,52 @@ namespace ProjectRed
     {
         static void Main(string[] args)
         {
-             AdditionArray();
-            
+            GetMin();           
 
+        }
+        private static void ShowMeth()
+        {
+            Functions functions = new Functions();
+            Console.WriteLine("Input number for comparation:");
+            int compareTo = int.Parse(Console.ReadLine());
+            int[] array = { 2, 15, 6, 7, 5, 6, 3, 54, 1, -8, 7, 0 };
+            array = functions.ChangeElements(compareTo, array);
+            foreach (int el in array)
+            {
+                Console.WriteLine(el);
+            }
+
+        }
+
+        private static void GetMin()
+        {
+            Console.WriteLine("Input number 1:");
+            float a = float.Parse(Console.ReadLine());
+            Console.WriteLine("Input number 2:");
+            float b = float.Parse(Console.ReadLine());
+            Console.WriteLine("Input number 3:");
+            float c = float.Parse(Console.ReadLine());
+
+            Functions functions = new Functions();
+            try
+            {
+                Console.WriteLine("Minimum number is: " + functions.GetMin(a, b, c));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        private static void Foreach()
+        {
+            int[] array = { 4, 7, 13, 20, 33, 23, 54 };
+            foreach (int el in array)
+            {
+                if (el > 20 && el < 50) 
+                {
+                    Console.WriteLine(el);
+                }
+            }
         }
 
         private static void CreateArray()
