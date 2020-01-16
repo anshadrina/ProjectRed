@@ -6,9 +6,18 @@ namespace ProjectRed
     {
         static void Main(string[] args)
         {
-            GetMin();           
+            GetElement();           
 
         }
+
+        private static void GetElement()
+        {
+            Console.WriteLine("Input element number:");
+            int element = int.Parse(Console.ReadLine());
+            Functions functions = new Functions();
+            Console.WriteLine("Your number is: " + functions.GetElement(element));
+        }
+
         private static void ShowMeth()
         {
             Functions functions = new Functions();

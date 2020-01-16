@@ -37,5 +37,28 @@ namespace ProjectRed
                 throw new Exception("Something went wrong");
             }
         }
+
+        public long GetElement(int element)
+        {
+            long previousElement = 0;
+            long currentElement = 1;
+
+            if (element == 1)
+            {
+                return previousElement;
+            }
+            if (element == 2)
+            {
+                return currentElement;
+            }
+           
+            for (int i = 3; i <= element; i++)
+            {
+                long temp = previousElement + currentElement;
+                previousElement = currentElement;
+                currentElement = temp;
+            }
+            return currentElement;
+        }
     }
 }
