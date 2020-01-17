@@ -6,10 +6,26 @@ namespace ProjectRed
     {
         static void Main(string[] args)
         {
-            GetElement();           
+            NormolizeLogins();           
 
         }
-
+        private static void NormolizeLogins()
+        {
+            Console.WriteLine("Input logins:");
+            string logins = Console.ReadLine();
+            StringFunc stringFunc = new StringFunc();
+            foreach (string login in stringFunc.NormalizeLogins(logins))
+            {
+                Console.WriteLine(login);
+            }
+            
+        }
+        private static void GetSubstring()
+        {
+            string text = "Сегодня мы с вами рассмотрели, как работать со строками в Си-шарп. Были описаны основные операторы и методы, которые используются для работы со строками";
+            
+            Console.WriteLine(text.Substring(text.IndexOf("Были"), text.LastIndexOf("методы") - text.IndexOf("Были") + 6));
+        }
         private static void GetElement()
         {
             Console.WriteLine("Input element number:");
