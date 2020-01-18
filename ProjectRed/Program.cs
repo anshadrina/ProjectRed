@@ -6,9 +6,41 @@ namespace ProjectRed
     {
         static void Main(string[] args)
         {
-            NormolizeLogins();           
-
+            while (true)
+            {
+                SummArrayElements();
+            }
         }
+        private static void SummArrayElements()
+        {
+            int[] array = { 5, 15, 85, 45, 12, 41, 7, 54, 68, 12 };
+            try
+            {
+                Console.WriteLine("Input index of element 1:");
+                int element1 = int.Parse(Console.ReadLine());
+                Console.WriteLine("Input index of element 2:");
+                int element2 = int.Parse(Console.ReadLine());
+                Exceptions exception = new Exceptions();
+                Console.WriteLine("Summ of elements: " + exception.SummArrayElements(array, element1, element2));
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Inputted value is not a number");
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         private static void NormolizeLogins()
         {
             Console.WriteLine("Input logins:");
