@@ -8,7 +8,54 @@ namespace ProjectRed
         {
             while (true)
             {
-                SummArrayElements();
+                GetMaxLength();
+            }
+        }
+
+        private static void GetMaxLength()
+        {
+            Console.WriteLine("Input file path:");
+            string filePath = Console.ReadLine();
+            Files files = new Files();
+            try
+            {
+                Console.WriteLine("The longest line is: " + files.GetMaxLengthLine(filePath));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private static void WriteArrayToFile()
+        {
+            Console.WriteLine("Input file path:");
+            string filePath = Console.ReadLine();
+            string[] array = { "red", "green", "black", "white", "blue" };
+            Files files = new Files();
+            try
+            {
+                files.WriteArrayToFile(array, filePath);
+                Console.WriteLine("File is successfully updated");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        private static void CreateFileWithNumbers()
+        {
+            Console.WriteLine("Input full path to file:");
+            string filePath = Console.ReadLine();
+            Files files = new Files();
+            try
+            {
+                files.WriteNumbersToFile(filePath: filePath);
+                Console.WriteLine("File was created");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
         private static void SummArrayElements()
