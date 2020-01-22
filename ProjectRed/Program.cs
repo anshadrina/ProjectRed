@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectRed.Lessons;
+using System;
 
 namespace ProjectRed
 {
@@ -6,10 +7,44 @@ namespace ProjectRed
     {
         static void Main(string[] args)
         {
+            TV tv = new TV();
             while (true)
             {
-                GetMaxLength();
+
+                ChangeChanel(tv);
+
             }
+        }
+
+        private static void ChangeChanel(TV tv)
+        {
+            Console.WriteLine("Input + if you want to switch chanel to the next.");
+            Console.WriteLine("Input - if you want to switch chanel to the previous.");
+            Console.WriteLine("Input number if you want to switch chanel to the next.");
+            string command = Console.ReadLine();
+
+            try
+            {
+                if (command == "+")
+                {
+                    tv.NextChanel();
+                }
+                else if (command == "-")
+                {
+                    tv.PreviousChanel();
+                }
+                else
+                {
+                    short channel = short.Parse(command);
+                    tv.ChangeChanel(channel);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.WriteLine("Current channel: " + tv.CurrentChannel);
         }
 
         private static void GetMaxLength()
