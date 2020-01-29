@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProjectRed
+namespace ProjectRed.Lessons
 {
-    public class Triangle
+    public class Triangle : Figure
     {
+        public Triangle() : base() { }
+        public Triangle(double x, double y) : base(x, y) { }
+
         public double Square(int a, int b)
         {
             if (a > 0 && b > 0)

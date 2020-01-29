@@ -14,6 +14,9 @@ namespace ProjectRed
                 ChangeChanel(tv);
 
             }
+
+            Triangle triangle = new Triangle(5, 6);
+            Circle circle = new Circle(3.12, 6.15);
         }
 
         private static void ChangeChanel(TV tv)
