@@ -8,6 +8,23 @@ namespace ProjectRed.Lessons
     {
         private short currentChanel = 0;
         private short minChanel = 0;
+        private short volume;
+        public short Volume
+        {
+            get
+            {
+                return volume;
+            }
+            set
+            {
+                if (value < 1)
+                    volume = 1;
+                else if (value > 100)
+                    volume = 100;
+                else
+                    volume = value;
+            }
+        }
 
         public short CurrentChannel
         {
