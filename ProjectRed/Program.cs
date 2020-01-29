@@ -7,16 +7,47 @@ namespace ProjectRed
     {
         static void Main(string[] args)
         {
-            TV tv = new TV();
+
             while (true)
             {
-
-                ChangeChanel(tv);
+                Warrior userWarrior = ChooseWarrior();
+                KillWarrior(userWarrior);
 
             }
+        }
+        private static Warrior ChooseWarrior()
+        {
+            Console.WriteLine("Choose your warrior.");
+            Console.WriteLine("Input 1 if you want a warrior in the light armor.");
+            Console.WriteLine("Input 2 if you want a warrior in the hard armor.");
+            int warrior = int.Parse(Console.ReadLine());
+            if (warrior == 1)
+            {
+                return new WarriorLightArmor();
+            }
+            else if (warrior == 2)
+            {
+                return new WarriorHardArmor();
+            }
+            else
+            {
+                Console.WriteLine("Wrong command. Try again.");
+                return ChooseWarrior();
+            }
+        }
 
-            Triangle triangle = new Triangle(5, 6);
-            Circle circle = new Circle(3.12, 6.15);
+        private static void KillWarrior(Warrior userWarrior)
+        {
+            
+            while (userWarrior.CurrentAmountLives > 0)
+            {
+                Console.WriteLine("Input amount of damage");
+                double damage = double.Parse(Console.ReadLine());
+                userWarrior.GetDamage(damage);
+                Console.WriteLine("Ammount of lives: " + userWarrior.CurrentAmountLives);
+            }
+            Console.WriteLine("Your warrior was killed.");
+            
         }
 
         private static void ChangeChanel(TV tv)
