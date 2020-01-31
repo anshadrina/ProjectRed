@@ -1,4 +1,5 @@
 ﻿using ProjectRed.Lessons;
+using ProjectRed.Lesson23;
 using System;
 
 namespace ProjectRed
@@ -10,9 +11,12 @@ namespace ProjectRed
 
             while (true)
             {
-                Warrior userWarrior = ChooseWarrior();
-                KillWarrior(userWarrior);
-
+                Console.WriteLine("List of names:");
+                Names names = new Names();
+                names.WriteNames();
+                Console.WriteLine("Input your character:");
+                char devider = char.Parse(Console.ReadLine());
+                names.WriteNames(devider);
             }
         }
         private static Warrior ChooseWarrior()
