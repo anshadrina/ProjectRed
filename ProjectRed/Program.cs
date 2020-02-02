@@ -11,13 +11,47 @@ namespace ProjectRed
 
             while (true)
             {
-                Console.WriteLine("List of names:");
-                Names names = new Names();
-                names.WriteNames();
-                Console.WriteLine("Input your character:");
-                char devider = char.Parse(Console.ReadLine());
-                names.WriteNames(devider);
+                Money money1 = new Money(GetAmountMoney(), GetCurrency());
+                Money money2 = new Money(GetAmountMoney(), GetCurrency());
+                SummMoney(money1, money2);
+                
             }
+        }
+
+        private static decimal GetAmountMoney()
+        {
+            try
+            {
+                Console.WriteLine("Input amount:");
+                decimal amount = decimal.Parse(Console.ReadLine());
+                return amount;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("You inputted not a number. Try again.");
+                return GetAmountMoney();
+            }
+        }
+
+        private static string GetCurrency()
+        {
+            Console.WriteLine("Input currency (RU or USD):");
+            string currency = Console.ReadLine();
+            if (currency == "RU" || currency == "USD")
+            {
+                 return currency;
+            }
+            else
+            {
+                Console.WriteLine("Wrong currency. Try again.");
+                return GetCurrency();
+            }
+        }
+
+        private static void SummMoney(Money money1, Money money2)
+        {
+            Money summ = money1 + money2;
+            Console.WriteLine("Summ of my money: " + summ.Amount + ", " + summ.Unit);
         }
         private static Warrior ChooseWarrior()
         {
