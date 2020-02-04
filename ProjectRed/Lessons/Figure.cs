@@ -6,19 +6,20 @@ namespace ProjectRed.Lessons
 {
     public class Figure
     {
-        private double x;
-        private double y;
+        public double X { get; set; }
+        public double Y { get; set; }
+
 
         public Figure()
         {
-            x = 0;
-            y = 0;
+            X = 0;
+            Y = 0;
         }
 
         public Figure(double x, double y)
         {
-            this.x = x;
-            this.y = y;
+            X = x;
+            Y = y;
         }
 
         public void Draw()
