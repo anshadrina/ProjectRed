@@ -11,10 +11,69 @@ namespace ProjectRed
 
             while (true)
             {
-                Money money1 = new Money(GetAmountMoney(), GetCurrency());
-                Money money2 = new Money(GetAmountMoney(), GetCurrency());
-                SummMoney(money1, money2);
-                
+                Circle circle1 = new Circle(GetX(), GetY(), GetRadius());
+                Circle circle2 = new Circle(GetX(), GetY(), GetRadius());
+                if (circle1.Equals(circle2) == true)
+                {
+                    Console.WriteLine("Circles are equal.");
+                }
+                else
+                {
+                    Console.WriteLine("Circles are not equal.");
+                }
+                Console.WriteLine("Hash code of the first circle: " + circle1.GetHashCode());
+                Console.WriteLine("Hash code of the second circle: " + circle2.GetHashCode());
+
+            }
+        }
+
+        private static double GetX()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Input x:");
+                    double x = double.Parse(Console.ReadLine());
+                    return x;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("You inputted not a number. Try again.");
+                }
+            }
+        }
+        private static double GetY()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Input y:");
+                    double y = double.Parse(Console.ReadLine());
+                    return y;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("You inputted not a number. Try again.");
+                }
+            }
+        }
+
+        private static double GetRadius()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Input radius:");
+                    double radius = double.Parse(Console.ReadLine());
+                    return radius;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("You inputted not a number. Try again.");
+                }
             }
         }
 
