@@ -1,6 +1,7 @@
 ﻿using ProjectRed.Lessons;
 using ProjectRed.Lesson23;
 using System;
+using System.Text.RegularExpressions;
 
 namespace ProjectRed
 {
@@ -9,24 +10,45 @@ namespace ProjectRed
         static void Main(string[] args)
         {
 
-            while (true)
-            {
-                Circle circle1 = new Circle(GetX(), GetY(), GetRadius());
-                Circle circle2 = new Circle(GetX(), GetY(), GetRadius());
-                if (circle1.Equals(circle2) == true)
-                {
-                    Console.WriteLine("Circles are equal.");
-                }
-                else
-                {
-                    Console.WriteLine("Circles are not equal.");
-                }
-                Console.WriteLine("Hash code of the first circle: " + circle1.GetHashCode());
-                Console.WriteLine("Hash code of the second circle: " + circle2.GetHashCode());
+            
+                GetTemperature();
 
-            }
         }
+        private static void GetTemperature()
+        {
+            DateTime[] dateTimes =
+            {
+                new DateTime(2020, 1, 20, 5, 0, 0), 
+                new DateTime(2020, 1, 21, 18, 0, 0), 
+                new DateTime(2020, 1, 22, 18, 20, 0), 
+                new DateTime(2020, 1, 23, 18, 0, 0), 
+                new DateTime(2020, 1, 24, 18, 0, 0) 
+            };
 
+            float[] temperature = { 26.3f, 27.1f, 25f, 34.2f, 16f };
+
+            for (int i = 0; i < dateTimes.Length; i++)
+            {
+                Console.WriteLine("{0:MMM dd ddd t} > {1:##.0} °C", dateTimes[i], temperature[i]);
+            }
+           
+        }
+        private static void FilterMat()
+        {
+            Console.WriteLine("Input text:");
+            string text = Console.ReadLine();
+            Regex filter = new Regex(@"(fuck|bitch|whore)\S*", RegexOptions.IgnoreCase);
+            var matches = filter.Matches(text);
+            text = filter.Replace(text, "censored");
+            Console.WriteLine(text);
+        }
+        private static void CheckPassword()
+        {
+            Console.WriteLine("Input password.");
+            string password = Console.ReadLine();
+            Regex passwordReg = new Regex(@"^[a-zA-Z]{1}\w{1,9}$");
+            Console.WriteLine(passwordReg.IsMatch(password));
+        }
         private static double GetX()
         {
             while (true)
