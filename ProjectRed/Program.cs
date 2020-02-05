@@ -9,11 +9,68 @@ namespace ProjectRed
     {
         static void Main(string[] args)
         {
-
-            
-                GetTemperature();
+            Cat cat = CreateCat();
+            while (cat.Hungry > 0)
+            {
+                Console.WriteLine("Cat's hungry: " + cat.Hungry);
+                FeedCat(cat, GetFood());
+            }
+            Console.WriteLine("Cat is fat.");
 
         }
+
+        private static Cat CreateCat()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Input amount of cat's hungry.");
+                    int hungry = int.Parse(Console.ReadLine());
+                    return new Cat(hungry);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("You inputted not a number. Try again.");
+                }
+            }
+        }
+
+        private static Food GetFood()
+        {
+            while (true)
+                try
+                {
+                    Console.WriteLine("Choose food (Fish, Milk, Meat, Mouse, Watter):");
+                    return (Food)Enum.Parse(typeof(Food), Console.ReadLine());
+                }
+            catch (Exception)
+                {
+                    Console.WriteLine("Wrong value. Try again.");
+                }
+        }
+
+        private static void FeedCat(Cat cat, Food food)
+        {
+            switch (food)
+            {
+                case Food.Fish:
+                    cat.Hungry -= 25;
+                    break;
+                case Food.Milk:
+                    cat.Hungry -= 15;
+                    break;
+                case Food.Meat:
+                    cat.Hungry -= 59;
+                    break;
+                case Food.Mouse:
+                    cat.Hungry -= 30;
+                    break;
+            }
+
+        }
+
+
         private static void GetTemperature()
         {
             DateTime[] dateTimes =
