@@ -9,16 +9,40 @@ namespace ProjectRed
     {
         static void Main(string[] args)
         {
-            Cat cat = CreateCat();
-            while (cat.Hungry > 0)
+            while(true)
             {
-                Console.WriteLine("Cat's hungry: " + cat.Hungry);
-                FeedCat(cat, GetFood());
-            }
-            Console.WriteLine("Cat is fat.");
+                Console.WriteLine("Input father's name.");
+                string fatherName = Console.ReadLine();
+                Console.WriteLine("Input amount of children (not mandatory).");
+                var test = Console.ReadLine();
 
+                if (string.IsNullOrEmpty(test))
+                {
+                    GetChildren(fatherName, null);
+                }
+                else
+                {
+                    int amountChildren = int.Parse(test);
+                    GetChildren(fatherName, amountChildren);
+                }
+            }
         }
 
+        private static void GetChildren(string fatherName, int? amountChildren)
+        {
+            if (amountChildren == null)
+            {
+                Console.WriteLine("Amount of " + fatherName + " children unknown.");
+            }
+            else if (amountChildren > 0)
+            {
+                Console.WriteLine("Amount of " + fatherName + " children: " + amountChildren);
+            }
+            else
+            {
+                Console.WriteLine(fatherName + " has no children");
+            }
+        }
         private static Cat CreateCat()
         {
             while (true)
