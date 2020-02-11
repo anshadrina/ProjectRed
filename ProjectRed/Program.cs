@@ -11,21 +11,51 @@ namespace ProjectRed
         {
             while(true)
             {
-                Console.WriteLine("Input father's name.");
-                string fatherName = Console.ReadLine();
-                Console.WriteLine("Input amount of children (not mandatory).");
-                var test = Console.ReadLine();
+                GetAverageCircle();
+            }
+        }
 
-                if (string.IsNullOrEmpty(test))
+
+
+        private static void GetAverageCircle()
+        {
+            CircleStruct[] circles = new CircleStruct[10];
+            for (int i = 0; i < circles.Length; i++)
+            {
+                Console.WriteLine("Input radius for circle " + (i+1));
+                CircleStruct circle;
+                circle.Radius = double.Parse(Console.ReadLine());
+                circles[i] = circle;
+            }
+            double average = CountAverage(circles);
+            Console.WriteLine("Average circle radius is " + average);
+            Console.WriteLine("Nearest circle radius is " + FindClosest(circles, average)?.Radius);
+            
+        }
+        private static CircleStruct? FindClosest(CircleStruct[] circles, double target)
+        {
+            CircleStruct? closestElement = null;
+            double distance = double.MaxValue;
+            foreach (CircleStruct el in circles)
+            {
+                double currentDistance = Math.Abs(el.Radius - target);
+                if (currentDistance < distance)
                 {
-                    GetChildren(fatherName, null);
-                }
-                else
-                {
-                    int amountChildren = int.Parse(test);
-                    GetChildren(fatherName, amountChildren);
+                    distance = currentDistance;
+                    closestElement = el;
                 }
             }
+            return closestElement;
+        }
+
+        private static double CountAverage(CircleStruct[] circles)
+        {
+            double summ = 0;
+            foreach (CircleStruct el in circles)
+            {
+                summ += el.Radius;
+            }
+            return summ / circles.Length;
         }
 
         private static void GetChildren(string fatherName, int? amountChildren)
