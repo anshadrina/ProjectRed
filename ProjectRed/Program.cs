@@ -2,6 +2,9 @@
 using ProjectRed.Lesson23;
 using System;
 using System.Text.RegularExpressions;
+using System.Net;
+using System.IO;
+using System.Text;
 
 namespace ProjectRed
 {
@@ -9,13 +12,34 @@ namespace ProjectRed
     {
         static void Main(string[] args)
         {
-            while(true)
-            {
-                GetAverageCircle();
-            }
+            GetResponse();
         }
 
+        private static void GetResponse()
+        {
+            string uri = "http://mycsharp.ru/";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+            request.Headers.Add("User-Agent: lesson34");
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                if (line.Contains("<h2>"))
+                {
+                    string header = reader.ReadLine();
+                    header = header.Trim();
+                    while (header.Contains('<') && header.Contains('>')) 
+                    {
+                        int indexOpen = header.IndexOf('<');
+                        int indexClosed = header.IndexOf('>');
 
+                        header = header.Remove(indexOpen, indexClosed - indexOpen + 1);
+                    }
+                    Console.WriteLine(header);
+                }
+            }
+        }
 
         private static void GetAverageCircle()
         {
